@@ -1,2 +1,3 @@
 # data-science
-repo for machine learning engineers and data engineers for picmetric project
+
+repo for machine learning / data engineering for picmetric
