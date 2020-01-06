@@ -4,7 +4,11 @@ import numpy
 
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
-from models.persist import Persistent
+from tensorflow.keras.applications.resnet50 import ResNet50
+
+
+def instantiate_model():
+	return (ResNet50(weights='imagenet'))
 
 
 def load(img_path):
@@ -18,7 +22,7 @@ def preprocess(img):
 	return (preprocessed)
 
 
-def predict(img_path: str, persistent: Persistent) -> dict:
+def predict(img_path: str, persistent: 'Persistent', classification_threshold: float = 0.3) -> dict:
 	x = preprocess(load(img_path))
 	model = persistent.models['resnet']
 	feats = model.predict(x)
@@ -27,7 +31,7 @@ def predict(img_path: str, persistent: Persistent) -> dict:
 		{
 			'object': str(pred[1]),
 			'confidence': str(pred[2]),
-		} for pred in results
+		} for pred in results if pred[2] >= classification_threshold
 	]
 
 	return (output)
