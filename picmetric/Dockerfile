@@ -25,7 +25,7 @@ RUN conda init bash && \
 
 RUN conda install -q -y libiconv PyYAML tensorflow-gpu==1.15
 RUN python3 -m pip install pyuwsgi Flask==1.1.1 \
-    Keras==2.3.1 Pillow==7.0.0 mtcnn == 0.1.0 \
+    Keras==2.3.1 Pillow==7.0.0 mtcnn==0.1.0 \
     matplotlib==3.1.2 numpy==1.17.4 python_decouple==3.3 \
     python_dotenv==0.10.3 tensorflow-gpu==1.15.0
 
