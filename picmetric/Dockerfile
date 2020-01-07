@@ -23,12 +23,11 @@ RUN conda init bash && \
     /bin/bash -c ". activate" && \
     conda config -q --append channels conda-forge
 
-RUN conda install -q -y libiconv PyYAML tensorflow==1.15
-RUN python3 -m pip install pyuwsgi Flask==1.1.1 Flask_SQLAlchemy==2.4.1 \
-    Keras==2.3.1 Pillow==6.2.1 beautifulsoup4==4.8.1 google_images_download==2.8.0 \
-    matplotlib==3.1.2 numpy==1.17.4 opencv_python==4.1.2.30 python_decouple==3.3 \
-    python_dotenv==0.10.3 requests==2.22.0 tensorflow==1.15.0 psycopg2-binary==2.8.4 \
-    lxml==4.4.2 praw==6.4.0 pandas==0.25.3
+RUN conda install -q -y libiconv PyYAML tensorflow-gpu==1.15
+RUN python3 -m pip install pyuwsgi Flask==1.1.1 \
+    Keras==2.3.1 Pillow==7.0.0 mtcnn == 0.1.0 \
+    matplotlib==3.1.2 numpy==1.17.4 python_decouple==3.3 \
+    python_dotenv==0.10.3 tensorflow-gpu==1.15.0 \
 
 COPY . /home/ubuntu/
 

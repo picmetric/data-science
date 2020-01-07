@@ -9,4 +9,4 @@ conda config --append channels conda-forge
 
 pip install gdown
 
-gdown -O picmetric/flaskapp/models/weights/yolov3.h5 --id 1FlunJyoz6GAU5RL5E0k3qxJNRawE3dNq
+gdown -O picmetric/flaskapp/models/weights/yolo.h5 --id 1FlunJyoz6GAU5RL5E0k3qxJNRawE3dNq

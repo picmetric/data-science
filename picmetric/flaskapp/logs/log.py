@@ -5,7 +5,7 @@ from os import path
 LOGFILE = path.join(
 	path.dirname(
 		path.abspath(__file__)
-	), 'logs/flask.log'
+	), 'flask.log'
 )
 
 
