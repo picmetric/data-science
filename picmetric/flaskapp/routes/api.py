@@ -8,9 +8,18 @@ api = Blueprint('api', __name__)
 
 @api.route("/api", methods=['GET', 'POST'])
 def run_models():
-	vals = request.get_json()
-	url = vals.get('url', None)
-	threshold = float(vals.get('threshold', 0.2))
+	vals = None
+	try:
+		vals = request.get_json()
+		url = vals.get('url', None)
+		threshold = max([float(vals.get('threshold', 0.2)), 0.01])
+	except Exception as e:
+		return jsonify({
+			'success': 'false',
+			'errortype': 'InvalidParameters',
+			'parameters': vals,
+			'message': f'Invalid or malformed parameters: {str(e)}',
+		})
 
 	try:
 		img_path = download(url)
@@ -18,9 +27,7 @@ def run_models():
 		return jsonify({
 			'success': 'false',
 			'errortype': 'InvalidURL',
-			'parameters': {
-				'url': url,
-			},
+			'parameters': vals,
 			'message': f'Unable to retrieve url: {url}',
 		})
 
