@@ -1,0 +1,25 @@
+
+version: '3.7'
+services:
+    flask:
+        build: ./picmetric
+        container_name: flask
+        restart: always
+        env_file:
+            - ./.env.prod
+        expose:
+            - 8080
+        volumes:
+            - web-data:/home/ubuntu/app/
+    nginx:
+        build: ./nginx
+        container_name: nginx
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - web-data:/home/ubuntu/app/
+
+volumes:
+    web-data:
