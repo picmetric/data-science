@@ -185,8 +185,7 @@ def predict(
 
 	img, original_size = load(img_path)
 	x = preprocess(img)
-	model = persistent.models['yolo']
-	pred = model.predict(x)
+	pred = persistent.predict_model('yolo', x)
 
 	text_labels = load_classes(YOLO_CLASSES_PATH)
 
