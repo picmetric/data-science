@@ -1,0 +1,8 @@
+name: picmetric
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+  - tensorflow-gpu==1.15
+prefix: C:\Users\jerme\Anaconda3\envs\picmetric
+
