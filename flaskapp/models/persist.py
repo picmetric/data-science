@@ -3,7 +3,7 @@
 import logging
 
 from urllib.request import urlretrieve
-from tensorflow.keras.applications.resnet50 import ResNet50
+from models import resnet, yolo
 
 
 PERSIST_LOG = logging.getLogger('root')
@@ -26,4 +26,9 @@ class Persistent:
 
 	def instantiate_models(self):
 		PERSIST_LOG.info('Loading resnet50...')
-		self.models['resnet'] = ResNet50(weights='imagenet')
+		self.models['resnet'] = resnet.instantiate_model()
+		PERSIST_LOG.info('Done loading resnet50.')
+
+		PERSIST_LOG.info('Loading YOLOv3...')
+		self.models['yolo'] = yolo.instantiate_model(yolo.YOLO_WEIGHTS_PATH)
+		PERSIST_LOG.info('Done loading YOLOv3.')
