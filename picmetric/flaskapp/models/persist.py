@@ -3,7 +3,7 @@
 import logging
 
 from urllib.request import urlretrieve
-from .models import resnet, yolo
+from . import resnet, yolo
 
 
 PERSIST_LOG = logging.getLogger('root')

@@ -13,6 +13,7 @@ mtcnn == 0.1.0
 numpy == 1.17.4
 
 Flask == 1.1.1
+flask-debugtoolbar
 
 # flaskapp\models\facedetector.py: 5
 pillow == 7.0.0
