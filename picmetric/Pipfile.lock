@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "27700c0ee6bb450c8466820f772103218547aa32a10f639b71e45bb43a2e7dc2"
+            "sha256": "35ce2557e93f89f15d7f1b00479e9667e6a4e37584dc4dfe04250e82af1d9893"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -29,6 +29,12 @@
             ],
             "version": "==0.8.1"
         },
+        "blinker": {
+            "hashes": [
+                "sha256:471aee25f3992bd325afa3772f1063dbdbbca947a041b8b89466dc00d606f8b6"
+            ],
+            "version": "==1.4"
+        },
         "click": {
             "hashes": [
                 "sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13",
@@ -50,6 +56,14 @@
             ],
             "index": "pypi",
             "version": "==1.1.1"
+        },
+        "flask-debugtoolbar": {
+            "hashes": [
+                "sha256:3d9657bc0c3633ace429e3ff451742bb59d1b7a7b95c9eb23a65ac9be2812959",
+                "sha256:ec810083123aae0632eb32ba11e1cb4cdace81e7ce6c5009dd06c5204afbce52"
+            ],
+            "index": "pypi",
+            "version": "==0.10.1"
         },
         "gast": {
             "hashes": [
@@ -166,6 +180,7 @@
                 "sha256:321d43772006a25a1d58eea17401ef2a34d388b588c9f7646c34796151ebc8cc",
                 "sha256:d08a57bd63546175f8f19232ba05906514d419da3e0af8ef7437fa1c11442e20"
             ],
+            "index": "pypi",
             "version": "==2.3.1"
         },
         "keras-applications": {

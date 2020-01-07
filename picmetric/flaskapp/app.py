@@ -2,30 +2,27 @@
 
 import logging
 
-from flask import Flask, jsonify, request
-from log import startLog, LOGFILE
+from flask import Flask, jsonify, request, render_template
 
-from .models.persist import Persistent, download
-from .models import resnet, yolo
-from .routes.api import api
+from flaskapp.models.persist import Persistent
+from flaskapp.routes.api import api
+from flaskapp.extensions import debug_toolbar
 
 def create_app(settings_override=None):
-	startLog(LOGFILE)
-	APP_LOG = logging.getLogger('root')
-
-	APP_LOG.info('Creating app...')
 	app = Flask(__name__, instance_relative_config=True)
 
 	app.config.from_object('config.settings')
-
-	APP_LOG.info('Creating persistent object...')
-	persistent = Persistent()
-	APP_LOG.info('Flask instantiation complete.')
-
+	app.config['persistent'] = Persistent()
 	app.register_blueprint(api)
+	extensions(app)
 
-    @app.route('/')
-    def redir():
-        return render_template('base.html')
+	@app.route('/')
+	def index():
+		return render_template('base.html')
 
 	return app
+
+def extensions(app):
+    debug_toolbar.init_app(app)
+
+    return None

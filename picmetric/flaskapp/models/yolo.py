@@ -2,8 +2,8 @@
 
 import numpy
 
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
+from tensorflow_core.keras.models import load_model
+from tensorflow_core.keras.preprocessing import image
 
 
 YOLO_WEIGHTS_URL = "https://pjreddie.com/media/files/yolov3.weights"
