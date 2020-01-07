@@ -23,7 +23,7 @@ def api():
 	APP_LOG.info(f'''/api called, request values:
 {request.values}''')
 	url = request.values.get('url', None)
-	threshold = request.values.get('threshold', 0.2)
+	threshold = float(request.values.get('threshold', 0.2))
 
 	try:
 		img_path = download(url)
