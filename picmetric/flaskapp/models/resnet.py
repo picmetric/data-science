@@ -3,6 +3,7 @@
 import numpy
 
 from tensorflow_core.keras.preprocessing import image
+from tensorflow.python.keras.backend import set_session
 from tensorflow_core.keras.applications.resnet50 import preprocess_input, decode_predictions
 from tensorflow_core.keras.applications.resnet50 import ResNet50
 
@@ -24,8 +25,7 @@ def preprocess(img):
 
 def predict(img_path: str, persistent: 'Persistent', classification_threshold: float = 0.3) -> dict:
 	x = preprocess(load(img_path))
-	model = persistent.models['resnet']
-	feats = model.predict(x)
+	feats = persistent.predict_model('resnet', x)
 	results = decode_predictions(feats)[0]
 	output = [
 		{
