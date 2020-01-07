@@ -1,0 +1,21 @@
+div {
+    position:relative;
+    left:0;
+    right:0;
+}
+
+h2 {
+    align-content: center;
+}
+
+input {
+    margin: 5px;
+}
+
+img.resize {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 10%;
+    height: 10%;
+}

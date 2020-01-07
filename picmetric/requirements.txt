@@ -12,15 +12,11 @@ mtcnn == 0.1.0
 # flaskapp\models\yolo.py: 3
 numpy == 1.17.4
 
-# flaskapp\models\facedetector.py: 5
-omelette == 1.1.6
+Flask == 1.1.1
 
 # flaskapp\models\facedetector.py: 5
 pillow == 7.0.0
 
-# flaskapp\models\facedetector.py: 5
-pillow-simd == 6.0.0.post0
-
 # flaskapp\models\resnet.py: 6,7
 # flaskapp\models\yolo.py: 5,6
-tensorflow == 1.15.0
+tensorflow-gpu == 1.15.0
