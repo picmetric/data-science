@@ -5,7 +5,7 @@ import logging
 from flask import Flask, jsonify, request
 from log import startLog, LOGFILE
 from models.persist import Persistent, download
-from models import resnet
+from models import resnet, yolo
 
 
 startLog(LOGFILE)
@@ -23,6 +23,7 @@ def api():
 	APP_LOG.info(f'''/api called, request values:
 {request.values}''')
 	url = request.values.get('url', None)
+	threshold = float(request.values.get('threshold', 0.2))
 
 	try:
 		img_path = download(url)
@@ -38,13 +39,19 @@ def api():
 			'message': f'Unable to retrieve url: {url}',
 		})
 
-	APP_LOG.info('Image retrieved, loading predictions...')
-	resnet_results = resnet.predict(img_path, persistent)
+	APP_LOG.info('Image retrieved.')
+	APP_LOG.info('Running resnet50...')
+	resnet_results = resnet.predict(img_path, persistent, classification_threshold=threshold)
+	APP_LOG.info('Done resnet50.')
+	APP_LOG.info('Running YOLOv3...')
+	yolo_results = yolo.predict(img_path, persistent, classification_threshold=threshold)
+	APP_LOG.info('Done YOLOv3.')
 
 	results = {
 		'success': 'true',
 		'url': str(url),
 		'resnet50_objects': resnet_results,
+		'yolo_objects': yolo_results,
 	}
 	APP_LOG.info(f'Done predicting for image at url: {url}')
 
