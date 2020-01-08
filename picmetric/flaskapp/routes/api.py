@@ -34,8 +34,17 @@ def run_models():
 			'exception': str(e),
 		})
 
-	resnet_results = resnet.predict(img_bytes, p, classification_threshold=threshold)
-	yolo_results = yolo.predict(img_bytes, p, classification_threshold=threshold)
+	try:
+		resnet_results = resnet.predict(img_bytes, p, classification_threshold=threshold)
+		yolo_results = yolo.predict(img_bytes, p, classification_threshold=threshold)
+	except Exception as e:
+		return jsonify({
+			'success': 'false',
+			'errortype': 'FailedPrediction',
+			'parameters': vals,
+			'message': f'Exception while retrieving predictions.',
+			'exception': str(e),
+		})
 
 	results = {
 		'success': 'true',
