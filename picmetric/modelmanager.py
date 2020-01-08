@@ -31,11 +31,15 @@ def instantiate(model_name):
 		models[model_name] = model
 
 
+def instantiate_all():
+	with lock:
+		for model_name, model_module in model_modules.items():
+			print(f'Instantiating {model_name}...')
+			models[model_name] = model_module.instantiate_model()
+			print('Done initial model instantiation.')
+
+
 def main():
-	for model_name, model_module in model_modules.items():
-		print(f'Instantiating {model_name}...')
-		models[model_name] = model_module.instantiate_model()
-	print('Done initial model instantiation.')
 	manager = BaseManager(('localhost', config('MANAGER_PORT', cast=int)), bytes(config('MANAGER_AUTHKEY'), encoding='utf8'))
 	manager.register('instantiate', instantiate)
 	manager.register('predict', predict)
