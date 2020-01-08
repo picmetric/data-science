@@ -8,7 +8,7 @@ from tensorflow_core.keras.applications.resnet50 import ResNet50
 
 
 def instantiate_model():
-	return (ResNet152V2(weights='imagenet'))
+	return (ResNet50(weights='imagenet'))
 
 
 def load(img_path):

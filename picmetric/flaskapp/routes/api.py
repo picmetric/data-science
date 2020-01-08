@@ -8,11 +8,15 @@ api = Blueprint('api', __name__)
 
 @api.route("/api", methods=['GET', 'POST'])
 def run_models():
+	p = Persistent()
 	vals = None
 	try:
-		vals = request.get_json()
-		url = vals.get('url', None)
-		threshold = max([float(vals.get('threshold', 0.2)), 0.01])
+		# vals = request.get_json()
+		# url = vals.get('url', None)
+		# threshold = max([float(vals.get('threshold', 0.2)), 0.01])
+		url = request.form.get('url')
+		threshold = .2
+		
 	except Exception as e:
 		return jsonify({
 			'success': 'false',
@@ -31,8 +35,8 @@ def run_models():
 			'message': f'Unable to retrieve url: {url}',
 		})
 
-	resnet_results = resnet.predict(img_path, app.config['persistent'], classification_threshold=threshold)
-	yolo_results = yolo.predict(img_path, app.config['persistent'], classification_threshold=threshold)
+	resnet_results = resnet.predict(img_path, p, classification_threshold=threshold)
+	yolo_results = yolo.predict(img_path, p, classification_threshold=threshold)
 
 	results = {
 		'success': 'true',

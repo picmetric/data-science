@@ -12,7 +12,7 @@ def create_app(settings_override=None):
 	app = Flask(__name__, instance_relative_config=True)
 
 	app.config.from_object('config.settings')
-	app.config['persistent'] = Persistent()
+	# app.config['persistent'] = Persistent()
 	app.register_blueprint(api)
 	extensions(app)
 
