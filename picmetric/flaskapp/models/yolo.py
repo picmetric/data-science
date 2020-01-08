@@ -185,8 +185,7 @@ def predict(
 
 	img, original_size = load(img_path)
 	x = preprocess(img)
-	model = persistent.models['yolo']
-	pred = model.predict(x)
+	pred = persistent.predict_model('yolo', x)
 
 	text_labels = load_classes(YOLO_CLASSES_PATH)
 
@@ -201,7 +200,8 @@ def predict(
 	cleaned_boxes = []
 	for box in sorted(boxes, key=lambda x: x.get_score(), reverse=True):
 		for cleaned_box in cleaned_boxes:
-			if box.get_overlap(cleaned_box) > overlap_threshold:
+			if (box.get_label() == cleaned_box.get_label() and
+					box.get_overlap(cleaned_box) > overlap_threshold):
 				break
 		else:
 			cleaned_boxes.append(box)

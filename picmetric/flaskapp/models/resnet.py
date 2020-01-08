@@ -24,8 +24,7 @@ def preprocess(img):
 
 def predict(img_path: str, persistent: 'Persistent', classification_threshold: float = 0.3) -> dict:
 	x = preprocess(load(img_path))
-	model = persistent.models['resnet']
-	feats = model.predict(x)
+	feats = persistent.predict_model('resnet', x)
 	results = decode_predictions(feats)[0]
 	output = [
 		{

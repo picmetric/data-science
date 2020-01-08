@@ -32,3 +32,12 @@ class Persistent:
 		PERSIST_LOG.info('Loading YOLOv3...')
 		self.models['yolo'] = yolo.instantiate_model(yolo.YOLO_WEIGHTS_PATH)
 		PERSIST_LOG.info('Done loading YOLOv3.')
+
+	def predict_model(self, model, x):
+		if isinstance(model, str):
+			model = self.models[model]
+
+		predictions = model.predict(x)
+
+		return (predictions)
+
