@@ -16,12 +16,13 @@ mtcnn == 0.1.0
 
 # flaskapp\models\facedetector.py: 6
 # flaskapp\models\resnet.py: 3
+# flaskapp\models\utils\image.py: 11
 # flaskapp\models\yolo.py: 3
 numpy == 1.17.4
 
-# flaskapp\models\facedetector.py: 5
-pillow == 7.0.0
+# flaskapp\models\persist.py: 4
+requests == 2.22.0
 
-# flaskapp\models\resnet.py: 6,7
+# flaskapp\models\resnet.py: 7,8
 # flaskapp\models\yolo.py: 5,6
 tensorflow == 1.15.0
