@@ -14,9 +14,9 @@ def run_models():
 		# vals = request.get_json()
 		# url = vals.get('url', None)
 		# threshold = max([float(vals.get('threshold', 0.2)), 0.01])
-		# url = request.form.get('url')
+		url = request.form.get('url')
 
-		url = request.json["url"]
+		# url = request.json["url"]
 		threshold = .2
 		
 	except Exception as e:
