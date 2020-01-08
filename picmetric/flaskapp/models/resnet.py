@@ -3,6 +3,7 @@
 import numpy
 
 from tensorflow_core.keras.preprocessing import image
+from flaskapp.models.utils.image import load_img_from_bytes
 from tensorflow_core.keras.applications.resnet50 import preprocess_input, decode_predictions
 from tensorflow_core.keras.applications.resnet50 import ResNet50
 
@@ -11,8 +12,8 @@ def instantiate_model():
 	return (ResNet50(weights='imagenet'))
 
 
-def load(img_path):
-	return (image.load_img(img_path, target_size=(224, 224)))
+def load(img_bytes):
+	return (load_img_from_bytes(img_bytes, target_size=(224, 224)))
 
 
 def preprocess(img):
@@ -22,8 +23,8 @@ def preprocess(img):
 	return (preprocessed)
 
 
-def predict(img_path: str, persistent: 'Persistent', classification_threshold: float = 0.3) -> dict:
-	x = preprocess(load(img_path))
+def predict(img_bytes, persistent: 'Persistent', classification_threshold: float = 0.3) -> dict:
+	x = preprocess(load(img_bytes))
 	feats = persistent.predict_model('resnet', x)
 	results = decode_predictions(feats)[0]
 	output = [
