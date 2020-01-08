@@ -15,16 +15,6 @@ class Non200ResponseError(Exception): pass
 # PERSIST_LOG = logging.getLogger('root')
 
 
-def download(img_url):
-	print(f'Retrieving image at url: {img_url} ...')
-	local_filename, headers = urlretrieve(img_url)
-	# PERSIST_LOG.info(
-	print(f'''Downloaded image at url: {img_url}
-		Local filename: {local_filename}
-		Headers:
-{headers}''')
-	return (local_filename)
-
 def retrieve_as_bytes(img_url):
 	print(f'Retrieving image at url: {img_url} ...')
 	with requests.get(img_url) as response:
