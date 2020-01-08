@@ -3,13 +3,14 @@
 import numpy
 
 from tensorflow.keras.preprocessing import image
-from tensorflow.python.keras.backend import set_session
-from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
-from tensorflow.keras.applications.resnet50 import ResNet50
+# from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+# from tensorflow.keras.applications.resnet50 import ResNet50
+from tensorflow.keras.applications.resnet_v2 import preprocess_input, decode_predictions
+from tensorflow.keras.applications.resnet_v2 import ResNet152V2
 
 
 def instantiate_model():
-	return (ResNet50(weights='imagenet'))
+	return (ResNet152V2(weights='imagenet'))
 
 
 def load(img_path):
