@@ -6,6 +6,8 @@ import io
 
 from urllib.request import urlretrieve
 from . import resnet, yolo
+from decouple import config
+from multiprocessing.managers import BaseManager
 
 
 # PERSIST_LOG = logging.getLogger('root')
@@ -32,26 +34,38 @@ def retrieve_as_bytes(img_url):
 class Persistent:
 	def __init__(self):
 		self.models = {}
-		self.instantiate_models()
+		self.modelmanager = BaseManager(('', config('MANAGER_PORT', cast=int)), bytes(config('MANAGER_AUTHKEY'), encoding='utf8'))
+		self.modelmanager.register('get_model')
+		self.modelmanager.register('set_model')
+		self.modelmanager.register('exists')
+		self.modelmanager.connect()
+		self.instantiate_models(self.modelmanager)
 		# PERSIST_LOG.info(
 		print('Done loading models.')
 
-	def instantiate_models(self):
+	def instantiate_models(self, modelmanager):
 		# PERSIST_LOG.info(
-		print('Loading resnet50...')
-		self.models['resnet'] = resnet.instantiate_model()
+		print('Checking for resnet...')
+		# self.models['resnet']
+		if modelmanager.exists('resnet'):
+			print('Resnet not found, instantiating...')
+			modelmanager.set_model('resnet', resnet.instantiate_model())
+		# resnet = modelmanager.get_model('resnet')
 		# PERSIST_LOG.info(
-		print('Done loading resnet50.')
+		print('Done loading resnet.')
 
 		# PERSIST_LOG.info(
-		print('Loading YOLOv3...')
-		self.models['yolo'] = yolo.instantiate_model(yolo.YOLO_WEIGHTS_PATH)
+		print('Checking for YOLOv3...')
+		if modelmanager.exists('yolo'):
+			print('yolo not found, instantiating...')
+			modelmanager.set_model('yolo', yolo.instantiate_model(yolo.YOLO_WEIGHTS_PATH))
+		# self.models['yolo'] = modelmanager.get_model('resnet', resnet.instantiate_model, yolo.YOLO_WEIGHTS_PATH)
 		# PERSIST_LOG.info(
 		print('Done loading YOLOv3.')
 
 	def predict_model(self, model, x):
 		if isinstance(model, str):
-			model = self.models[model]
+			model = self.modelmanager.get_model(model)
 
 		predictions = model.predict(x)
 
