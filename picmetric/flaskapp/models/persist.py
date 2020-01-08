@@ -40,7 +40,7 @@ def retrieve_as_bytes(img_url):
 class Persistent:
 	def __init__(self):
 		self.models = {}
-		self.modelmanager = BaseManager(('', config('MANAGER_PORT', cast=int)), bytes(config('MANAGER_AUTHKEY'), encoding='utf8'))
+		self.modelmanager = BaseManager(('localhost', config('MANAGER_PORT', cast=int)), bytes(config('MANAGER_AUTHKEY'), encoding='utf8'))
 		self.modelmanager.register('predict')
 		self.modelmanager.register('instantiate')
 		self.modelmanager.register('exists')
