@@ -200,7 +200,8 @@ def predict(
 	cleaned_boxes = []
 	for box in sorted(boxes, key=lambda x: x.get_score(), reverse=True):
 		for cleaned_box in cleaned_boxes:
-			if box.get_overlap(cleaned_box) > overlap_threshold:
+			if (box.get_label() == cleaned_box.get_label() and
+					box.get_overlap(cleaned_box) > overlap_threshold):
 				break
 		else:
 			cleaned_boxes.append(box)
