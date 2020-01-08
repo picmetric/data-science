@@ -2,10 +2,9 @@
 
 import numpy
 
-from tensorflow.keras.preprocessing import image
-from tensorflow.python.keras.backend import set_session
-from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
-from tensorflow.keras.applications.resnet50 import ResNet50
+from tensorflow_core.keras.preprocessing import image
+from tensorflow_core.keras.applications.resnet50 import preprocess_input, decode_predictions
+from tensorflow_core.keras.applications.resnet50 import ResNet50
 
 
 def instantiate_model():

@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 import logging
-import tensorflow
 
-from tensorflow.python.keras.backend import set_session
 from urllib.request import urlretrieve
 from . import resnet, yolo
 
