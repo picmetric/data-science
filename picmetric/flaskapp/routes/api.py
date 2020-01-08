@@ -11,10 +11,10 @@ def run_models():
 	p = Persistent()
 	vals = None
 	try:
-		# vals = request.get_json()
-		# url = vals.get('url', None)
+		vals = request.get_json()
+		url = vals.get('url', None)
 		# threshold = max([float(vals.get('threshold', 0.2)), 0.01])
-		url = request.form.get('url')
+		# url = request.form.get('url')
 		threshold = .2
 		
 	except Exception as e:
