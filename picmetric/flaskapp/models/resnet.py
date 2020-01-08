@@ -3,7 +3,6 @@
 import numpy
 
 from tensorflow.keras.preprocessing import image
-from tensorflow.python.keras.backend import set_session
 # from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 # from tensorflow.keras.applications.resnet50 import ResNet50
 from tensorflow.keras.applications.resnet_v2 import preprocess_input, decode_predictions
