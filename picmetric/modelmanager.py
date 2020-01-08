@@ -32,6 +32,10 @@ def instantiate(model_name):
 
 
 def main():
+	for model_name, model_module in model_modules.items():
+		print(f'Instantiating {model_name}...')
+		models[model_name] = model_module.instantiate_model()
+	print('Done initial model instantiation.')
 	manager = BaseManager(('', config('MANAGER_PORT', cast=int)), bytes(config('MANAGER_AUTHKEY'), encoding='utf8'))
 	manager.register('instantiate', instantiate)
 	manager.register('predict', predict)
