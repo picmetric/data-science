@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 import logging
-import tensorflow
 
-from tensorflow.python.keras.backend import set_session
 from urllib.request import urlretrieve
 from . import resnet, yolo
 
@@ -23,10 +21,7 @@ def download(img_url):
 class Persistent:
 	def __init__(self):
 		self.models = {}
-		self.session = tensorflow.Session(graph=tensorflow.Graph())
-		with self.session.graph.as_default():
-			set_session(self.session)
-			self.instantiate_models()
+		self.instantiate_models()
 		PERSIST_LOG.info('Done loading models.')
 
 	def instantiate_models(self):
@@ -42,9 +37,7 @@ class Persistent:
 		if isinstance(model, str):
 			model = self.models[model]
 
-		with self.session.graph.as_default():
-			set_session(self.session)
-			predictions = model.predict(x)
+		predictions = model.predict(x)
 
 		return (predictions)
 
