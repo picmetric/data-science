@@ -4,6 +4,7 @@ import numpy
 
 from tensorflow_core.keras.models import load_model
 from tensorflow_core.keras.preprocessing import image
+from flaskapp.models.utils.image import load_img_from_bytes
 
 
 YOLO_WEIGHTS_URL = "https://pjreddie.com/media/files/yolov3.weights"
@@ -30,11 +31,11 @@ def load_classes(classes_path):
 	return (cleaned_classes)
 
 
-def load(img_path, target_size=YOLO_SIZE):
-	img = image.load_img(img_path)
+def load(img_bytes, target_size=YOLO_SIZE):
+	img = load_img_from_bytes(img_bytes)
 	original_size = img.size
 
-	img = image.load_img(img_path, target_size=target_size)
+	img = load_img_from_bytes(img_bytes, target_size=target_size)
 	return (img, original_size)
 
 
@@ -177,13 +178,13 @@ def bbox_iou(box1, box2):
 
 
 def predict(
-		img_path: str,
+		img_bytes,
 		persistent: 'Persistent',
 		overlap_threshold: float = 0.5,
 		classification_threshold: float = 0.3,
 	) -> dict:
 
-	img, original_size = load(img_path)
+	img, original_size = load(img_bytes)
 	x = preprocess(img)
 	pred = persistent.predict_model('yolo', x)
 
