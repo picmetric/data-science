@@ -47,7 +47,6 @@ Yolo_v3 outputs will display the above information as well as the details of the
 			}
 		}
 	],
-```
 ## MTCNN
 When deployed, the MTCNN model will provide details specific to facial recognition as seen below:
 
