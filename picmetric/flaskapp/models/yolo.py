@@ -2,6 +2,7 @@
 
 import numpy
 
+from decouple import config
 from tensorflow_core.keras.models import load_model
 from tensorflow_core.keras.preprocessing import image
 from flaskapp.models.utils.image import load_img_from_bytes
@@ -18,7 +19,9 @@ YOLO_ANCHORS = [
 YOLO_SIZE = (416, 416)
 
 
-def instantiate_model(model_path):
+def instantiate_model(model_path=None):
+	if model_path is None:
+		model_path = config('YOLO_WEIGHTS_PATH')
 	# import os
 	# print(os.getcwd())
 	return (load_model(model_path))
