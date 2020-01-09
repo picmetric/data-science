@@ -31,8 +31,8 @@ RUN python3 -m pip install pyuwsgi Flask==1.1.1 \
     python_dotenv==0.10.3 tensorflow-gpu==1.15.0 flask-debugtoolbar==0.10.1 \
     setuptools==44.0.0 requests==2.22.0
 
-RUN pip install --editable .
-
 COPY . /home/ubuntu/
+
+RUN pip install --editable .
 
 CMD [ "uwsgi", "app.ini" ]
