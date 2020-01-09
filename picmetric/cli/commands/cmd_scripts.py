@@ -4,6 +4,8 @@ import subprocess, click, os
 @click.argument('path', default='picmetric')
 def cli(path):
 
-    cmd = f'python {os.path.join('scripts', path+'.py')}'
+    full_path = os.path.join('scripts', path+'.py')
+
+    cmd = f'python {full_path}'
 
     return subprocess.call(cmd, shell=True)
