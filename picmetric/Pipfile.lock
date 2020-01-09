@@ -27,7 +27,6 @@
                 "sha256:070a54e890cefb5b3739d19f30f5a5ec840ffc9c50ffa7d23cc9fc1a38ebbfc5",
                 "sha256:6a6effda93f4e1ce9f618779b2dd1d9d84f1e32812c23a29b3fff6fd7f63fa5e"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==0.8.1"
         },
         "blinker": {
@@ -212,7 +211,6 @@
                 "sha256:321b033d07f2a4136d3ec762eac9f16a10ccd60f53c0c91af90217ace7ba1f19",
                 "sha256:b12271b2047cb23eeb98c8b5622e2e5c5e9abd9784a153e9d8ef9cb4dd09d749"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.1.0"
         },
         "jinja2": {
@@ -283,7 +281,6 @@
                 "sha256:f790f8b3dff3d53453de6a7b7ddd173d2e020fb160baff578d578065b108a05f",
                 "sha256:fe51b79da0062f8e9d49ed0182a626a7dc7a0cbca0328f612c6ee5e4711c81e4"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.1.0"
         },
         "markdown": {
@@ -325,7 +322,6 @@
                 "sha256:cd5df75523866410809ca100dc9681e301e3c27567cf498077e8551b6d20e42f",
                 "sha256:e249096428b3ae81b08327a63a485ad0878de3fb939049038579ac0ef61e17e7"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.1.1"
         },
         "matplotlib": {
@@ -350,8 +346,7 @@
         "mtcnn": {
             "hashes": [
                 "sha256:5168c3a5ab9bb91e97a370134982f07daf745ac003db51b92fe4c666331ef10c",
-                "sha256:56624f08e088e5cf062de8005df09696cdbc0f4c2fc3578483b19e0fb3984252",
-                "sha256:d991b5bf3c4fa61b9e28b1a9a0005e0a57adc8d7aaa49833ed1010bb8d5aa670"
+                "sha256:56624f08e088e5cf062de8005df09696cdbc0f4c2fc3578483b19e0fb3984252"
             ],
             "index": "pypi",
             "version": "==0.1.0"
@@ -426,7 +421,6 @@
             "hashes": [
                 "sha256:edfada4b1d0b3b782ace8bc14e80618ff629abf53143e1e6bbf9bd00b11ece77"
             ],
-            "markers": "python_version >= '3.5'",
             "version": "==3.1.0"
         },
         "pillow": {
@@ -466,7 +460,6 @@
                 "sha256:3d7a7d8d20b4e7a8f63f62de2d192cfd8b7a53c56caba7ece95367ca2b80c574",
                 "sha256:3f509f7e50d806a434fe4a5fbf602516002a0f092889209fff7db82060efffc0",
                 "sha256:4571da974019849201fc1ec6626b9cea54bd11b6bed140f8f737c0a33ea37de5",
-                "sha256:557686c43fbd04f5f7c533f00feee9a37dcca7b5896e3ae3664a33864e6dd546",
                 "sha256:56bd1d84fbf4505c7b73f04de987eef5682e5752c811141b0186a3809bfb396f",
                 "sha256:680c668d00b5eff08b86aef9e5ba9a705e621ea05d39071cfea8e28cb2400946",
                 "sha256:6b5b947dc8b3f2aec0eaad65b0b5113fcd642c358c31357c647da6281ee31104",
@@ -603,7 +596,7 @@
                 "sha256:dc60bb302f48acf6da8ca4444cfa17d52c63c5415302a9ee77b3b21618090521",
                 "sha256:dee1bbf3a6c8f73b6b218cb28eed8dd13347ea2f87d572ce19b289d6fd3fbc59"
             ],
-            "markers": "python_version >= '3.5'",
+            "markers": "python_version >= '3'",
             "version": "==1.4.1"
         },
         "six": {
@@ -622,7 +615,7 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1'",
             "version": "==2.0.2"
         },
-        "tensorflow": {
+        "tensorflow-gpu": {
             "hashes": [
                 "sha256:1351cc812880b083acf243602d05036bb27711ca66ee08c99a2d16da70371906",
                 "sha256:1d94692b1c2b71a9a3e5f2fbc5aba4a5126661ad4ba192d849b9626cc32648cf",
@@ -639,7 +632,7 @@
             "index": "pypi",
             "version": "==2.0.0"
         },
-        "tensorflow-estimator": {
+        "tensorflow-gpu-estimator": {
             "hashes": [
                 "sha256:aa8deab25d09a9730dfbae8ec58f4eb00ec2a90b5ca3dcbd8fa0717103d3bbb3"
             ],
@@ -664,7 +657,6 @@
                 "sha256:7280924747b5733b246fe23972186c6b348f9ae29724135a6dfc1e53cea433e7",
                 "sha256:e5f4a1f98b52b18a93da705a7458e55afb26f32bff83ff5d19189f92462d65c4"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==0.16.0"
         },
         "wheel": {
