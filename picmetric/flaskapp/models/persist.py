@@ -32,13 +32,13 @@ def retrieve_as_bytes(img_url):
 	print(f'''Downloaded image at url: {img_url}''')
 	return (bytes_content)
 
+
 class Persistent:
 	def __init__(self, max_tries=5):
 		self.models = {}
 		self.modelmanager = self.connect_or_start_manager(max_tries=max_tries)
 		self.instantiate_models(self.modelmanager)
 		# PERSIST_LOG.info(
-		print('Done loading models.')
 
 	def connect_or_start_manager(self, max_tries=5):
 		for attempt in range(1, max_tries + 1):
@@ -91,7 +91,9 @@ class Persistent:
 		# PERSIST_LOG.info(
 
 	def predict_model(self, model, x):
+		print(f'Predicting on model {model}...')
 		predictions = self.modelmanager.predict(model, x)._getvalue()
+		print(f'Done predicting on model {model}.')
 
 		return predictions
 
