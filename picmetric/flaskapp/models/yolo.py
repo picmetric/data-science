@@ -25,7 +25,7 @@ def instantiate_model(model_path=None):
 	print(os.path.isfile(config('YOLO_WEIGHTS_PATH')))
 	print(config('YOLO_WEIGHTS_PATH'), os.getcwd())
 	if model_path is None:
-		model_path = config('YOLO_WEIGHTS_PATH')
+		model_path = './flaskapp/models/weights/yolo.h5'
 	# import os
 	# print(os.getcwd())
 	return (load_model(model_path))
