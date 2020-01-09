@@ -80,11 +80,11 @@ class Persistent:
 		# PERSIST_LOG.info(
 
 		# PERSIST_LOG.info(
-		print('Checking for YOLOv3...')
+		print('Checking for yolo...')
 		if modelmanager.exists('yolo')._getvalue() is False:
 			print('yolo not found, instantiating...')
 			modelmanager.instantiate('yolo')
-			print('Done loading YOLOv3.')
+			print('Done loading yolo.')
 		else:
 			print('yolo already loaded.')
 		# self.models['yolo'] = modelmanager.get_model('resnet', resnet.instantiate_model, yolo.YOLO_WEIGHTS_PATH)

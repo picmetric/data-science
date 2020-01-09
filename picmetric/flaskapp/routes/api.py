@@ -49,7 +49,7 @@ def run_models():
 	results = {
 		'success': 'true',
 		'url': str(url),
-		'resnet50_objects': resnet_results,
+		'resnet_objects': resnet_results,
 		'yolo_objects': yolo_results,
 	}
 
