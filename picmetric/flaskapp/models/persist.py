@@ -78,6 +78,7 @@ class Persistent:
 			print('yolo not found, instantiating...')
 			print('working dir')
 			print(os.path.isfile('./flaskapp/models/weights/yolo.h5'))
+			print(os.path.isfile(config('YOLO_WEIGHTS_PATH')))
 			modelmanager.instantiate('yolo')
 			print('Done loading YOLOv3.')
 		else:
