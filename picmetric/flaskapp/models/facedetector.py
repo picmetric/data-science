@@ -4,7 +4,7 @@
 from matplotlib import pyplot
 from PIL import Image
 from numpy import asarray
-from mtcnn.mtcnn import MTCNN
+from flaskapp.models.mtcnn.mtcnn import MTCNN
 import os
 import shutil
 
