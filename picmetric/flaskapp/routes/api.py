@@ -37,6 +37,7 @@ def run_models():
 	try:
 		resnet_results = resnet.predict(img_bytes, p, classification_threshold=threshold)
 		yolo_results = yolo.predict(img_bytes, p, classification_threshold=threshold)
+		mtcnn_results = mtcnn.predict(img_bytes, p, classification_threshold=threshold)
 	except Exception as e:
 		return jsonify({
 			'success': 'false',
@@ -51,6 +52,7 @@ def run_models():
 		'url': str(url),
 		'resnet_objects': resnet_results,
 		'yolo_objects': yolo_results,
+		'mtcnn_faces': mtcnn_results,
 	}
 
 	return(jsonify(results))
