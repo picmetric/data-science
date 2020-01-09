@@ -4,6 +4,11 @@ Predictions leverage two pre-trained neural networks (yolo_v3, resnet_50) to sum
 
 The data science back-end works here by leveraging a Flask app with an API endpoint. depending on the neural network, the output provided in dictionary format (compatible in producing a JSON object) will differ.
 
+## Models used
+- Res Net 50 - Object recognition neural network trained on 1,000 different classes
+- Yolo_V3 Coco - "You Only Look Once" - Trained on 80 classes in object recognition. Also provides 'bounding boxes' to surround perceived objects in image
+- MTCNN - Multi-task Cascaded Convolutional Neural Networks for Face Detection. Trained on faces to be able to identify eyes, mouth and nose to triangulate a human face in an image. Currently in test. 
+
 ## Resnet_50
 
 Resnet_50 outputs will show the confidence level and the perceived object:
