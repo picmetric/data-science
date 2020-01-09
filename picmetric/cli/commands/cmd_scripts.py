@@ -5,5 +5,5 @@ import subprocess, click, os
 def cli(path):
     # full_path = os.path.join(os.path.dirname(__file__), 'picmetric', 'scripts', path)
     # cmd = f'python {full_path}'
-    cmd = 'python -c "print(os.getcwd())"'
+    cmd = 'python -c "import os; print(os.getcwd())"'
     return subprocess.call(cmd, shell=True)
