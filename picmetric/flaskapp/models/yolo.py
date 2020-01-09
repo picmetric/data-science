@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import numpy
+import numpy, os
 
 from decouple import config
 from tensorflow_core.keras.models import load_model
