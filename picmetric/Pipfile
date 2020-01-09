@@ -14,7 +14,7 @@ mtcnn = "==0.1.0"
 numpy = "==1.17.4"
 python-decouple = "==3.3"
 requests = "==2.22.0"
-tensorflow = "==1.15.0"
+tensorflow = "==2.0"
 
 [requires]
 python_version = "3.7"

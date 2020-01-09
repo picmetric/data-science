@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 
-import logging
-import requests
-import io
-import time
-import os
-import numpy
-import subprocess
-import sys
+import logging, requests, io, time, os, numpy, sys, subprocess
 
 from urllib.request import urlretrieve
 from . import resnet, yolo
@@ -83,6 +76,9 @@ class Persistent:
 		print('Checking for YOLOv3...')
 		if modelmanager.exists('yolo')._getvalue() is False:
 			print('yolo not found, instantiating...')
+			print('working dir')
+			print(os.path.isfile('./flaskapp/models/weights/yolo.h5'))
+			print(os.path.isfile(config('YOLO_WEIGHTS_PATH')))
 			modelmanager.instantiate('yolo')
 			print('Done loading YOLOv3.')
 		else:
