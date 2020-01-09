@@ -7,6 +7,7 @@ import time
 import os
 import numpy
 import subprocess
+import sys
 
 from urllib.request import urlretrieve
 from . import resnet, yolo
@@ -59,7 +60,7 @@ class Persistent:
 		print('Starting modelmanager...')
 		# os.system('pipenv run python modelmanager.py > /dev/null 2>&1 < /dev/null & disown')
 		with open(os.devnull, 'r+b', 0) as DEVNULL:
-			subprocess.Popen(['nohup', 'pipenv', 'run', 'python', 'modelmanager.py'],
+			subprocess.Popen(['nohup', sys.executable, 'modelmanager.py'],
 				stdin=DEVNULL, stdout=DEVNULL, stderr=DEVNULL, close_fds=True, preexec_fn=os.setpgrp)
 		print(f'modelmanager start command executed, sleeping 3 seconds...')
 		time.sleep(3)
