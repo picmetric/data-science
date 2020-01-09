@@ -77,7 +77,7 @@ class Persistent:
 		if modelmanager.exists('yolo')._getvalue() is False:
 			print('yolo not found, instantiating...')
 			print('working dir')
-			print(os.getcwd())
+			print(os.listdir(os.getcwd()))
 			modelmanager.instantiate('yolo')
 			print('Done loading YOLOv3.')
 		else:
