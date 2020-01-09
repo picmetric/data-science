@@ -9,7 +9,8 @@ The data science back-end works here by leveraging a Flask app with an API endpo
 - A user will upload an image that will be added to an Amazon S3 bucket (a public cloud storage resource). 
 - A url pointer to the image is stored in the database
 - The data science back-end will follow the url pointer to the image and run analysis on it using the neural network models described above
-- Image attributes (model predictions/outputs)  are stored in the database
+- Image attributes (model predictions/outputs) are stored in the database and sent back through the pipeline via a JSON object.
+	- This is important because the modeling was done in Python and the front-end in Javascript. JSON is digestable for both.
 - These same attributes are served back to the user via the client
 
 ## Models used
