@@ -32,14 +32,20 @@
                     </form>
                   </td>
                   <td>
-                     <form action = "/api" method = "POST" enctype = "multipart/form-data">
+                     <form action = "/api" method = "POST" enctype = "multipart/form-data" id="api_form">
                         <center>
                         <input style=" margin:5px; padding: 5px; width: 150px;" type = "text" name = "url" placeholder="Image URL Here" />
                         <input style="margin:5px; padding: auto;" class="button-primary" type="submit" value="Send">
                     </center>
                     </form>
-                  </td>
-      </div>
+				  </td>
+				</tr>
+			</tbody>
+		  </table>
+		  <pre id="api_results">
+
+		  </pre>
+    	</div>
       </div>
       </tbody>
       </table>
@@ -48,6 +54,47 @@
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	  
    </body>
+	<script name="form_functions">
+		function displayResults(results) {
+			document.getElementById('api_results').innerHTML = JSON.stringify(results, null, 2);
+		};
+
+		function displayRetrieving() {
+			document.getElementById('api_results').innerHTML = 'Processing image...';
+		};
+
+		function submitForm(form) {
+			displayRetrieving();
+
+			var obj = {};
+			var fd = new FormData(form);
+			fd.forEach(function(value, key){
+				obj[key] = value;
+			});
+			var formJSON = JSON.stringify(obj);
+
+			getResults(formJSON);
+		};
+
+		const getResults = async (formJSON) => {
+			const response = await fetch('/api', {
+				method: 'POST',
+				body: formJSON, // string or object
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			const results = await response.json(); //extract JSON from the http response
+			displayResults(results);
+		};
+
+		form = document.getElementById("api_form");
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
+			submitForm(form);
+		});
+	</script>
 </html>

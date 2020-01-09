@@ -4,6 +4,7 @@ import numpy
 
 from tensorflow_core.keras.models import load_model
 from tensorflow_core.keras.preprocessing import image
+from flaskapp.models.utils.image import load_img_from_bytes
 
 
 YOLO_WEIGHTS_URL = "https://pjreddie.com/media/files/yolov3.weights"
@@ -30,11 +31,11 @@ def load_classes(classes_path):
 	return (cleaned_classes)
 
 
-def load(img_path, target_size=YOLO_SIZE):
-	img = image.load_img(img_path)
+def load(img_bytes, target_size=YOLO_SIZE):
+	img = load_img_from_bytes(img_bytes)
 	original_size = img.size
 
-	img = image.load_img(img_path, target_size=target_size)
+	img = load_img_from_bytes(img_bytes, target_size=target_size)
 	return (img, original_size)
 
 
@@ -177,16 +178,15 @@ def bbox_iou(box1, box2):
 
 
 def predict(
-		img_path: str,
+		img_bytes,
 		persistent: 'Persistent',
 		overlap_threshold: float = 0.5,
 		classification_threshold: float = 0.3,
 	) -> dict:
 
-	img, original_size = load(img_path)
+	img, original_size = load(img_bytes)
 	x = preprocess(img)
-	model = persistent.models['yolo']
-	pred = model.predict(x)
+	pred = persistent.predict_model('yolo', x)
 
 	text_labels = load_classes(YOLO_CLASSES_PATH)
 
@@ -201,7 +201,8 @@ def predict(
 	cleaned_boxes = []
 	for box in sorted(boxes, key=lambda x: x.get_score(), reverse=True):
 		for cleaned_box in cleaned_boxes:
-			if box.get_overlap(cleaned_box) > overlap_threshold:
+			if (box.get_label() == cleaned_box.get_label() and
+					box.get_overlap(cleaned_box) > overlap_threshold):
 				break
 		else:
 			cleaned_boxes.append(box)

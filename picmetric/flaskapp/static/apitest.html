@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>API Test Page</title>
+
+		<link rel="stylesheet" type="text/css" href="/static/styles/collapsible.css" media="screen"></link>
+	</head>
+
+	<body>
+		<h3>API Test Page</h3>
+
+		<hr />
+
+		<form id="api_form">
+			<input style="width: 98%;" type="text" name="url" placeholder="Image URL Here" />
+			<br />
+			<label for="threshold">Classification threshold: </label>
+			<input type="range" name="threshold" min="0.1" value="0.2" max="0.9" step="0.1" oninput="this.nextElementSibling.value=this.value;">
+			<input type="number" value="0.2" step="0.1" min="0.1" max="0.9" oninput="this.previousElementSibling.value=this.value;"><br />
+			<br />
+			<input type="submit" value="Submit">
+		</form>
+
+		<hr />
+
+		<div id="api_results_container">
+			<div id="api_results"></div>
+		</div>
+	</body>
+
+	<script name="print_functions">
+		//Every item needs a unique id
+		window.counter=0;
+		//And, of course, a function to retrieve it
+		function getId() {
+			window.counter++;
+			//Being an ID, a string is more workable
+			return(String(window.counter));
+		}
+		
+		//For laziness and legibility, an iterator function
+		function stepOver(obj, func, params=[]) {
+			var retVals=[];
+			for (var i in obj) {
+				retVals.push(func.apply(this,[i,obj[i]].concat(params)));
+			}
+		}
+		
+		//show/hide toggle function. Uses class "hidden" and "collapsed"
+		function showHide(activatorEl,hideEl) {
+			if (hideEl.classList.contains("hidden")) {
+				hideEl.classList.remove("hidden");
+				activatorEl.classList.remove("collapsed");
+			}
+			else {
+				hideEl.classList.add("hidden");
+				activatorEl.classList.add("collapsed");
+			}
+		}
+		
+		//A test display function
+		//Iteratively walks a JSON object
+		function testDisplay(key, value, parent) {
+			var newDiv=document.createElement("div");
+			newDiv.id=getId();
+			newDiv.className="keyValDiv";
+			
+			var valDiv=document.createElement("div");
+			valDiv.id=getId();
+			valDiv.className="valDiv";
+			
+			var keyDiv=document.createElement("div");
+			keyDiv.id=getId();
+			keyDiv.className="keyDiv";
+			keyDiv.innerHTML=String(key);
+			keyDiv.onclick=function() {showHide(keyDiv,valDiv);};
+			
+			if (value!==null && typeof(value)=="object") {
+				valDiv.className="containerDiv";
+				stepOver(value, testDisplay, [valDiv]);
+			}
+			else {
+				valDiv.innerHTML=String(value);
+			}
+			
+			newDiv.appendChild(keyDiv);
+			newDiv.appendChild(valDiv);
+			
+			parent.appendChild(newDiv);
+		}
+	</script>
+
+	<script name="form_functions">
+		function displayResults(results) {
+			document.getElementById('api_results').innerHTML = '';
+			testDisplay("API results",results,document.getElementById('api_results'));
+		};
+
+		function displayRetrieving() {
+			document.getElementById('api_results').innerHTML = 'Processing image...';
+		};
+
+		function submitForm(form) {
+			displayRetrieving();
+
+			var obj = {};
+			var fd = new FormData(form);
+			fd.forEach(function(value, key){
+				obj[key] = value;
+			});
+			var formJSON = JSON.stringify(obj);
+
+			getResults(formJSON);
+		};
+
+		const getResults = async (formJSON) => {
+			const response = await fetch('/api', {
+				method: 'POST',
+				body: formJSON, // string or object
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			const results = await response.json(); //extract JSON from the http response
+			displayResults(results);
+		};
+
+		form = document.getElementById("api_form");
+		form.addEventListener("submit", function (event) {
+			event.preventDefault();
+			submitForm(form);
+		});
+	</script>
+</html>
