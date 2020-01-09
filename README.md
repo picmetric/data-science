@@ -1,3 +1,8 @@
+# Authors
+
+Jeremy Meek - Machine Learning Engineer / Data Engineer
+Logan Keith - Machine Learning Engineer / Data Engineer
+Xander Bennett - Junior Machine Learning Engineer / Data Engineer
 # Data-Science Repo for Picmetric
 
 Predictions leverage two pre-trained neural networks (yolo_v3, resnet_50) to summarize attributes of images (i.e. counts of objects, people, etc.) For facial recognition, a model is currently in development using the MTCNN neural network for this project and will be implemented upon completion.
