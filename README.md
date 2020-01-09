@@ -1,7 +1,9 @@
 # Authors
 
 Jeremy Meek - Machine Learning Engineer / Data Engineer
+
 Logan Keith - Machine Learning Engineer / Data Engineer
+
 Xander Bennett - Junior Machine Learning Engineer / Data Engineer
 # Data-Science Repo for Picmetric
 
