@@ -4,6 +4,14 @@ Predictions leverage two pre-trained neural networks (yolo_v3, resnet_50) to sum
 
 The data science back-end works here by leveraging a Flask app with an API endpoint. depending on the neural network, the output provided in dictionary format (compatible in producing a JSON object) will differ.
 
+## How it works
+
+- A user will upload an image that will be added to an Amazon S3 bucket (a public cloud storage resource). 
+- A url pointer to the image is stored in the database
+- The data science back-end will follow the url pointer to the image and run analysis on it using the neural network models described above
+- Image attributes (model predictions/outputs)  are stored in the database
+- These same attributes are served back to the user via the client
+
 ## Models used
 - Res Net 50 - Object recognition neural network trained on 1,000 different classes
 - Yolo_V3 Coco - "You Only Look Once" - Trained on 80 classes in object recognition. Also provides 'bounding boxes' to surround perceived objects in image
