@@ -9,9 +9,9 @@ def cli(path):
     # full_path = os.path.join('scripts', path)
 
     # for docker
-    # full_path = os.path.join('data-science', 'picmetric', 'scripts', path)
-    # cmd = f'python {full_path}'
+    full_path = os.path.join('data-science', 'picmetric', 'scripts', path)
+    cmd = f'python {full_path}'
 
     # for adjusting file path from inside docker
-    cmd = 'python -c "import os; print(os.listdir(os.getcwd()))"'
+    # cmd = 'python -c "import os; print(os.listdir(os.getcwd()))"'
     return subprocess.call(cmd, shell=True)
