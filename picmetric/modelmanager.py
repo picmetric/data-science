@@ -3,11 +3,12 @@
 from multiprocessing import Lock
 from multiprocessing.managers import BaseManager
 from decouple import config
-from flaskapp.models import yolo, resnet
+from flaskapp.models import yolo, resnet, mtcnnmodel
 
 model_modules = {
 	'yolo': yolo,
 	'resnet': resnet,
+	'mtcnn': mtcnnmodel,
 }
 models = {}
 lock = Lock()

@@ -8,13 +8,13 @@ verify_ssl = true
 [packages]
 tensorflow = "==2.0.0"
 matplotlib = "*"
-mtcnn = "*"
 flask = "*"
 flask-debugtoolbar = "*"
 pillow = "*"
 python-decouple = "*"
 click = "*"
 requests = "*"
+opencv-python = "*"
 
 [requires]
 python_version = "3.7"
