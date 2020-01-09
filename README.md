@@ -25,7 +25,8 @@ Resnet_50 outputs will show the confidence level and the perceived object:
 
 Yolo_v3 outputs will display the above information as well as the details of the accompanying 'bounding box':
 
-	```"yolo_objects": [
+	```
+	"yolo_objects": [
 		{
 			"confidence": "0.22083153",
 			"object": "bald_eagle",
@@ -46,11 +47,13 @@ Yolo_v3 outputs will display the above information as well as the details of the
 				"y_max": "204"
 			}
 		}
-	],```
+	],
+	```
 ## MTCNN
 When deployed, the MTCNN model will provide details specific to facial recognition as seen below:
 
-	```"mtcnn_faces": [
+	```
+	"mtcnn_faces": [
 		{
 			"confidence": "0.22083153",
 			"bounding_box": {
@@ -67,4 +70,5 @@ When deployed, the MTCNN model will provide details specific to facial recogniti
 				"mouth_right": [164, 229]
 			}
 		}
-	],```
+	],
+	```
