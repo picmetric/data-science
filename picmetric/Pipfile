@@ -6,15 +6,15 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-click = "==7.0"
-flask = "==1.1.1"
-flask-debugtoolbar = "==0.10.1"
-matplotlib = "==3.1.2"
-mtcnn = "==0.1.0"
-numpy = "==1.17.4"
-python-decouple = "==3.3"
-requests = "==2.22.0"
-tensorflow = "==2.0"
+tensorflow = "==2.0.0"
+matplotlib = "*"
+mtcnn = "*"
+flask = "*"
+flask-debugtoolbar = "*"
+pillow = "*"
+python-decouple = "*"
+click = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
