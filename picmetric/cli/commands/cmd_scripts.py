@@ -3,15 +3,7 @@ import subprocess, click, os
 @click.command()
 @click.argument('path', default='picmetric')
 def cli(path):
-    # needs to be dependent on FLASK_ENV
 
-    # For runnin locally
-    # full_path = os.path.join('scripts', path)
+    cmd = f'python {os.path.join('scripts', path+'.py')}'
 
-    # for docker
-    full_path = os.path.join('scripts', path+'.py')
-    cmd = f'python {full_path}'
-
-    # for adjusting file path from inside docker
-    # cmd = 'python -c "import os; print(os.listdir(os.getcwd()))"'
     return subprocess.call(cmd, shell=True)
