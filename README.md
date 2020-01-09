@@ -8,7 +8,7 @@ The data science back-end works here by leveraging a Flask app with an API endpo
 
 Resnet_50 outputs will show the confidence level and the perceived object:
 
-`{
+{
 	"resnet50_objects": [
 		{
 			"confidence": "0.5326323",
@@ -47,7 +47,7 @@ Yolo_v3 outputs will display the above information as well as the details of the
 			}
 		}
 	],
-	`
+	
 ## MTCNN
 When deployed, the MTCNN model will provide details specific to facial recognition as seen below:
 
