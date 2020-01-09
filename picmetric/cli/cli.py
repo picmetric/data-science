@@ -1,10 +1,7 @@
-import os
-
-import click
+import os, click
 
 cmd_folder = os.path.join(os.path.dirname(__file__), 'commands')
 cmd_prefix = 'cmd_'
-
 
 class CLI(click.MultiCommand):
     def list_commands(self, ctx):

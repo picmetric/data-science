@@ -18,6 +18,7 @@ RUN wget https://repo.continuum.io/archive/Anaconda3-2019.10-Linux-x86_64.sh -q 
     rm Anaconda3-2019.10-Linux-x86_64.sh
 
 ENV PATH /home/ubuntu/anaconda3/bin:$PATH
+ENV PYTHONUNBUFFERED 1
 
 RUN conda init bash && \
     /bin/bash -c ". activate" && \
@@ -28,6 +29,7 @@ RUN python3 -m pip install pyuwsgi Flask==1.1.1 \
     Keras==2.3.1 Pillow==7.0.0 mtcnn==0.1.0 \
     matplotlib==3.1.2 numpy==1.17.4 python_decouple==3.3 \
     python_dotenv==0.10.3 tensorflow-gpu==1.15.0 flask-debugtoolbar \
+    setuptools == 44.0.0.post20200106 requests == 2.22.0 \
     pip install --editable .
 
 COPY . /home/ubuntu/

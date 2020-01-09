@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 
-import logging
-import requests
-import io
-import time
-import os
-import numpy
-import subprocess
-import sys
+import logging, requests, io, time, os, numpy, sys, subprocess
 
 from urllib.request import urlretrieve
 from . import resnet, yolo
