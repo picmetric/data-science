@@ -46,7 +46,7 @@ Yolo_v3 outputs will display the above information as well as the details of the
 				"y_max": "204"
 			}
 		}
-	],
+	],```
 ## MTCNN
 When deployed, the MTCNN model will provide details specific to facial recognition as seen below:
 
@@ -67,5 +67,4 @@ When deployed, the MTCNN model will provide details specific to facial recogniti
 				"mouth_right": [164, 229]
 			}
 		}
-	],
-```
+	],```
