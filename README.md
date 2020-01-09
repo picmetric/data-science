@@ -9,6 +9,7 @@ The data science back-end works here by leveraging a Flask app with an API endpo
 - Yolo_V3 Coco - "You Only Look Once" - Trained on 80 classes in object recognition. Also provides 'bounding boxes' to surround perceived objects in image
 - MTCNN - Multi-task Cascaded Convolutional Neural Networks for Face Detection. Trained on faces to be able to identify eyes, mouth and nose to triangulate a human face in an image. Currently in test. 
 
+# JSON Output
 ## Resnet_50
 
 Resnet_50 outputs will show the confidence level and the perceived object:
