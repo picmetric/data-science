@@ -34,9 +34,9 @@ python-decouple == 3.3
 requests == 2.22.0
 
 # setup.py: 1
-setuptools == 44.0.0.post20200106
+setuptools == 44.0.0
 
 # flaskapp\models\resnet.py: 7,8
 # flaskapp\models\yolo.py: 6,7
 # scripts\check_gpu.py: 1
-tensorflow == 1.15.0
+tensorflow == 2.0
