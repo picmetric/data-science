@@ -11,7 +11,7 @@ from decouple import config
 
 
 def instantiate_model():
-	return (MTCNN(weights_file=config('MTCNN_WEIGHTS_PATH'), min_face_size=10, steps_threshold=[.3, .4, .4]))
+	return (MTCNN(min_face_size=10, steps_threshold=[.3, .4, .4]))
 
 
 def predict(img_bytes, persistent: 'Persistent', classification_threshold: float = 0.3) -> dict:
