@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request, render_template
 from flask import current_app as app
 
 from flaskapp.models.persist import Persistent, retrieve_as_bytes
-from flaskapp.models import resnet, yolo
+from flaskapp.models import resnet, yolo, mtcnnmodel
 
 api = Blueprint('api', __name__)
 
@@ -15,6 +15,8 @@ def run_models():
 		url = vals.get('url', None)
 		threshold = max([float(vals.get('threshold', 0.2)), 0.01])
 	except Exception as e:
+		print(str(e.__traceback__))
+		print(e)
 		return jsonify({
 			'success': 'false',
 			'errortype': 'InvalidParameters',
@@ -26,6 +28,8 @@ def run_models():
 	try:
 		img_bytes = retrieve_as_bytes(url)
 	except Exception as e:
+		print(str(e.__traceback__))
+		print(e)
 		return jsonify({
 			'success': 'false',
 			'errortype': 'InvalidURL',
@@ -37,8 +41,10 @@ def run_models():
 	try:
 		resnet_results = resnet.predict(img_bytes, p, classification_threshold=threshold)
 		yolo_results = yolo.predict(img_bytes, p, classification_threshold=threshold)
-		mtcnn_results = mtcnn.predict(img_bytes, p, classification_threshold=threshold)
+		mtcnn_results = mtcnnmodel.predict(img_bytes, p, classification_threshold=threshold)
 	except Exception as e:
+		print(str(e.__traceback__))
+		print(e)
 		return jsonify({
 			'success': 'false',
 			'errortype': 'FailedPrediction',
