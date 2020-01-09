@@ -9,7 +9,7 @@ def cli(path):
     # full_path = os.path.join('scripts', path)
 
     # for docker
-    full_path = os.path.join('scripts', path)
+    full_path = os.path.join('scripts', path+'.py')
     cmd = f'python {full_path}'
 
     # for adjusting file path from inside docker
