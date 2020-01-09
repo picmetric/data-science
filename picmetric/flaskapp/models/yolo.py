@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import numpy
+import numpy, os
 
 from decouple import config
 from tensorflow_core.keras.models import load_model
@@ -20,8 +20,12 @@ YOLO_SIZE = (416, 416)
 
 
 def instantiate_model(model_path=None):
+	print('working dir')
+	print(os.path.isfile('./flaskapp/models/weights/yolo.h5'))
+	print(os.path.isfile(config('YOLO_WEIGHTS_PATH')))
+	print(config('YOLO_WEIGHTS_PATH'), os.getcwd())
 	if model_path is None:
-		model_path = config('YOLO_WEIGHTS_PATH')
+		model_path = './flaskapp/models/weights/yolo.h5'
 	# import os
 	# print(os.getcwd())
 	return (load_model(model_path))
