@@ -15,6 +15,7 @@ tensorflow-gpu = "*"
 keras = "*"
 flask-debugtoolbar = "*"
 python-decouple = "*"
+click = "*"
 
 [requires]
 python_version = "3.7"
