@@ -4,12 +4,14 @@ import numpy
 
 from tensorflow_core.keras.preprocessing import image
 from flaskapp.models.utils.image import load_img_from_bytes
-from tensorflow_core.keras.applications.resnet50 import preprocess_input, decode_predictions
-from tensorflow_core.keras.applications.resnet50 import ResNet50
+# from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+# from tensorflow.keras.applications.resnet50 import ResNet50
+from tensorflow.keras.applications.resnet_v2 import preprocess_input, decode_predictions
+from tensorflow.keras.applications.resnet_v2 import ResNet152V2
 
 
 def instantiate_model():
-	return (ResNet50(weights='imagenet'))
+	return (ResNet152V2(weights='imagenet'))
 
 
 def load(img_bytes):
