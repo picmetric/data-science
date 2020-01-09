@@ -1,3 +1,8 @@
-DEBUG = True
+from decouple import config
 
-SECRET_KEY = 'forFlaskDebugToolbar'
+if config('FLASK_ENV') == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
+
+SECRET_KEY = config('SECRET_KEY')
