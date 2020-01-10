@@ -11,6 +11,12 @@ Predictions leverage two pre-trained neural networks (yolo_v3, resnet_50) to sum
 
 The data science back-end works here by leveraging a Flask app with an API endpoint. depending on the neural network, the output provided in dictionary format (compatible in producing a JSON object) will differ.
 
+# Deployment
+ssh into your EC2 instance that has python, docker preinstalled on debian-based linux, then
+```wget https://raw.githubusercontent.com/picmetric/data-science/distortedlogic/bootstrap.sh
+sudo sh bootstrap.sh```
+profit??
+
 ## How it works
 
 - A user will upload an image that will be added to an Amazon S3 bucket (a public cloud storage resource). 
