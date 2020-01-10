@@ -13,9 +13,27 @@ The data science back-end works here by leveraging a Flask app with an API endpo
 
 # Deployment
 ssh into your EC2 instance that has python, docker preinstalled on debian-based linux, then
-```wget https://raw.githubusercontent.com/picmetric/data-science/distortedlogic/bootstrap.sh
-sudo sh bootstrap.sh```
+```
+wget https://raw.githubusercontent.com/picmetric/data-science/distortedlogic/bootstrap.sh
+sudo sh bootstrap.sh
+```
 profit??
+
+# Use of custom CLI
+- list available CLI command
+```
+sudo docker-compose exec flask picmetric
+```
+
+- check that a GPU is passed through to docker for tensorflow
+```
+sudo docker-compose exec flask picmetric scripts check_gpu
+```
+
+- Start the model manager server
+```
+sudo docker-compose exec flask picmetric scripts startmm
+```
 
 ## How it works
 
