@@ -11,6 +11,30 @@ Predictions leverage two pre-trained neural networks (yolo_v3, resnet_50) to sum
 
 The data science back-end works here by leveraging a Flask app with an API endpoint. depending on the neural network, the output provided in dictionary format (compatible in producing a JSON object) will differ.
 
+# Deployment
+ssh into your EC2 instance that has python and docker preinstalled on debian-based linux, then
+```
+wget https://raw.githubusercontent.com/picmetric/data-science/distortedlogic/bootstrap.sh
+sudo sh bootstrap.sh
+```
+profit??
+
+# Use of custom CLI
+- list available CLI command
+```
+sudo docker-compose exec flask picmetric
+```
+
+- check that a GPU is passed through to docker for tensorflow
+```
+sudo docker-compose exec flask picmetric scripts check_gpu
+```
+
+- Start the model manager server
+```
+sudo docker-compose exec flask picmetric scripts startmm
+```
+
 ## How it works
 
 - A user will upload an image that will be added to an Amazon S3 bucket (a public cloud storage resource). 
