@@ -34,7 +34,7 @@ python-decouple == 3.3
 requests == 2.22.0
 
 # setup.py: 1
-setuptools == 44.0.0
+setuptools == 65.5.1
 
 # flaskapp\models\resnet.py: 7,8
 # flaskapp\models\yolo.py: 6,7
